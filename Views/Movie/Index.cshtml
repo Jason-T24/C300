@@ -1,0 +1,47 @@
+﻿@model DataRowCollection
+<h2> Movies </h2>
+
+@if (TempData["Message"] != null)
+{
+   <div class="alert alert-@TempData["MsgType"]">
+      @TempData["Message"]
+   </div>
+}
+
+<div>
+   <table id="tblPerform" class="table table-condensed table-hover">
+      <thead>
+         <tr>
+            <th>Movie ID</th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Date/Time</th>
+            <th>Duration</th>
+            <th>Price</th>
+            <th>Theater</th>
+         </tr>
+      </thead>
+     
+      @foreach (DataRow row in Model)
+      {
+   <tr>
+       <td>@row["Mid"]</td>
+       <td>@row["Title"]</td>
+       <td>@row["Director"]</td>
+       <td>@String.Format("{0:yyyy-MM-dd HH:mm}", row["PerformDT"])</td>
+       <td>@row["Duration"] hrs</td>
+       <td>@String.Format("{0:c}", row["Price"])</td>
+       <td>@row["Theater"]</td>
+       <td>
+           <a asp-controller="Movie"
+              asp-action="Delete"
+              asp-route-id="@row["Mid"]"
+              onclick="return confirm('Delete movie?')">Delete</a>
+       </td>
+
+   </tr>
+      }
+
+   </table>
+
+</div>
