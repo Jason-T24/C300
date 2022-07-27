@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Data;
 using System.Security.Claims;
-using L10.Models;
+using C300.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 
-namespace L10.Controllers
+namespace C300.Controllers
 {
 
     public class AccountController : Controller

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace L10.Models
+namespace C300.Models
 {
     public class UserLogin
     {
