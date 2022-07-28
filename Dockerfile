@@ -9,16 +9,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["L10/L10.csproj", "L10/"]
-RUN dotnet restore "L10/L10.csproj"
+COPY ["C300/C300.csproj", "C300/"]
+RUN dotnet restore "C300/C300.csproj"
 COPY . .
-WORKDIR "/src/L10"
-RUN dotnet build "L10.csproj" -c Release -o /app/build
+WORKDIR "/src/C300"
+RUN dotnet build "C300.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "L10.csproj" -c Release -o /app/publish
+RUN dotnet publish "C300.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "L10.dll"]
+ENTRYPOINT ["dotnet", "C300.dll"]
